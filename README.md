@@ -1,3 +1,6 @@
+# Fixed
+Append the USER-AGENT header to the request through the website firewall.
+
 # RSS Feed GNOME Shell extension
 
 Simple RSS Feed reader extension for GNOME Shell.

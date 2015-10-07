@@ -36,6 +36,8 @@ const Parser = Me.imports.parsers.factory;
 const Log = Me.imports.logger;
 const Settings = Convenience.getSettings();
 
+const HttpSession = Me.imports.httpsession;
+
 const ExtensionGui = {
     RssPopupMenuItem: Me.imports.extensiongui.rsspopupmenuitem.RssPopupMenuItem,
     RssPopupSubMenuMenuItem: Me.imports.extensiongui.rsspopupsubmenumenuitem.RssPopupSubMenuMenuItem
@@ -254,8 +256,11 @@ const RssFeedButton = new Lang.Class({
      */
     _httpGetRequestAsync: function(url, params, position, callback) {
 
-        if (this._httpSession == null)
-            this._httpSession = new Soup.SessionAsync();
+        // if (this._httpSession == null)
+        //    this._httpSession = new Soup.SessionAsync();
+        if (this._httpSession == null) {
+            this._httpSession = HttpSession.newHttpSession();
+        }
 
         // Lours974 Vitry David
         // This makes the session work under a proxy. The funky syntax here
